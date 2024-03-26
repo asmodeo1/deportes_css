@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marca</title>
+    <style>
+         /* Los comentarios con ++++ son las propiedades que se añaden al usar flexbox.
+      Los comentarios con ---- son las propiedades que se quitan al usar flexbox */
+
+        /* Quitamos todos los márgenes y espaciados para evitar 
+        que encontremos luego espacios inesperados */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* Como casi todas las letras van a ser de un tipo, la ponemos en el body */
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        /* Caragamos una fuente */
+        @font-face {
+            font-family: varsity; /* Un nombre cualquiera que luego debemos usar */
+            src: url(fuentes/VarsityTeam-Bold.otf);
+        }
+        header h1 {
+            text-align: center;
+            /* La fuente a la que dimos nombre más arriba */
+            font-family: varsity;
+            color: rgb(179, 5, 5);
+            font-size: 4em;
+            font-weight: normal;
+        }
+        nav {
+            background-color: rgb(179, 5, 5);
+            text-align: center;
+        }
+        nav a {
+            /* Para poder darle espaciados superior e inferior a los enlaces */
+            display: inline-block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: black;
+        }
+
+        /* Para que se desplaze un poco hacia la izquierda cada comentario cuando se 
+        pase el ratón sobre el mismo, usaremos margin-left: -20px; en el selector
+         .comentario:hover {. 
+        Si no cambiamos el ancho del contenedor, main, y usamos margin: auto para centrar
+        los comentarios, al cambiar el margen izquierdo a -20px, se pondría a la izquierda
+        de todo de la ventana, pues el margin izquierdo ya no será auto.
+        Por ello tampoco hace falta poner ancho a los comentarios.
+        Otra opción sería usar posicionamiento relativo. Para ello:
+        - el width de 60% lo podríamos poner en el main o en los comentarios
+        - ponemos position: relative en .comentario
+        - en  .comentario:hover { pondremos left: -20px; */
+        main {
+            width: 60%;
+            margin: auto;
+        }
+        /* Creamos una clase general para todos los comentarios */
+        .comentario {
+            background-color: rgb(236, 235, 235);
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            box-shadow: 2px 2px 2px grey;
+            background-repeat: no-repeat;
+            background-position: left 10px center;
+            padding: 5px 0 5px 40px;
+            margin: 20px auto;
+        }
+        .comentario p:first-child {
+            font-weight: bold;
+        }
+        .comentario:hover {
+            background-color: lightgrey;
+            margin-left: -20px;
+        }
+        /* Creamos clases para cada una de las imagenes.
+        Luego aplicaremos la clase comentario y una de estas
+        al comentario correspondiente */
+        .final {
+            background-image: url(imagenes/final.svg);
+        }
+        .ocasion {
+            background-image: url(imagenes/ocasion.svg);
+        }
+        .amarilla {
+            background-image: url(imagenes/amarilla.svg);
+        }
+        .gol {
+            background-image: url(imagenes/gol.svg);
+            background-color: rgb(237, 60, 60);
+            font-size: 1.3em;
+            color: white;
+        }
+        .descanso {
+            background-image: url(imagenes/descanso.svg);
+        }
+        .comienzo {
+            background-image: url(imagenes/primera_parte.svg);
+        }
+        .cambio {
+            background-image: url(imagenes/cambio.svg);
+        }
+ 
+        .resultado {
+            /* ------ display: table; */
+            display: flex;       /* ++++++++ */
+            /* ++++++++ Centramos los elementos horizontalmente */
+            justify-content: center;
+            /* ++++++++ Centramos los elementos verticalmente */
+            align-items: center;  
+            /* +++++++ Con table el contenedor ajusta el tamaño a su contenido 
+            Por ello le debemos dar un ancho al contenedor. También podríamos
+            haberlo definido como display: inline-flex; pero luego habría que 
+            centrarlo */
+            width: 50%;     
+            margin: auto;
+            margin-top: 20px;
+            background-image: url(imagenes/cesped.svg);
+            background-size: 50%;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            /* Podemos poner varias sombras */
+            box-shadow: 4px 4px 2px grey, -4px -4px 2px grey;
+        }
+        /* ------------- 
+        #local, #goles, #visitante {
+            display: table-cell;
+        }*/
+        #goles {
+            font-size: 2em;
+            /* Para poner los goles centrados verticalmente */
+            /* ------  vertical-align: middle; */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marca</h1>
+    </header>
+    <nav>
+        <a href="">Fútbol</a>
+        <a href="">Baloncesto</a>
+        <a href="">Motor</a>
+        <a href="">Tenis</a>
+        <a href="">Otros</a>
+    </nav>
+    <main>
+        <section class="resultado">
+            <div id="local">
+                <img src="escudo_coruxo.png" alt="Coruxo">
+                <p>Coruxo</p>
+            </div>
+            <div id="goles">2 - 0</div>
+            <div id="visitante">
+                <img src="escudo_langreo.png" alt="Langreo">
+                <p>Langreo</p>
+            </div>
+        </section>
+        <section>
+        <div class="comentario final">
+            <p>94'</p>
+            <p>Final del partido. Victoria del Coruxo</p>
+        </div>
+        <div class="comentario ocasion">
+            <p>89'</p>
+            <p>Ocasión del Langreo. Se va por poco el tiro</p>
+        </div>
+        <div class="comentario amarilla">
+            <p>75'</p>
+            <p>Tarjeta amarilla para el defensa del Langreo</p>
+        </div>
+        <div class="comentario gol">
+            <p>74'</p>
+            <p>Gol del Coruxo. Gol de Pablo</p>
+        </div>
+        <div class="comentario cambio">
+            <p>62'</p>
+            <p>Cambio en el Langreo. Entra Jordi por Suárez</p>
+        </div>            
+        <div class="comentario descanso">
+            <p>46'</p>
+            <p>Descanso en el Vao. Va ganando el Coruxo</p>
+        </div>
+        <div class="comentario amarilla">
+            <p>32'</p>
+            <p>Tarjeta amarilla para el portero del Coruxo por protestar</p>
+        </div>
+        <div class="comentario gol">
+            <p>12'</p>
+            <p>Gol del Coruxo. Gol de Luis</p>
+        </div>   
+        <div class="comentario ocasion">
+            <p>3'</p>
+            <p>Para con dificultad el portero del Langreo</p>
+        </div> 
+        <div class="comentario comienzo">
+            <p>0'</p>
+            <p>Comienza el partido</p>
+        </div>   
+    </section>           
+    </main>
+    </body>
+</html>
