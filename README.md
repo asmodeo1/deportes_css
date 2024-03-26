@@ -14,4 +14,6 @@ Efectos a realizar:
 - al pasar el ratón sobre cada comentario debe cambiar su color de fondo (un gris un poco más oscuro) y moverse un poco a la izquierda (sobresaliendo)
 - al pasar el ratón sobre cada una de las opciones del menú, debe cambiar su color de fondo a negro
   
-
+Se han añadido dos soluciones:
+- index_resultado.htm que usa display:table para el marcador
+- idnex_resultado con flexbox.htm que usa display: flex para el marcador
